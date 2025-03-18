@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>️Yellow Flowers Day️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: #ffb6c1;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            background-attachment: fixed;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(2, 2, 2, 0.233) 0%, rgba(12, 12, 12, 0.6) 100%);
+        }
+        .container {
+            margin-top: 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3.0em;
+            font-weight: bold;
+            color: #ffb6c1;
+        }
+        .btn {
+            font-size: 1.0em;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            color: rgb(228, 102, 196);
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .flower {
+            position: absolute;
+            transition: top 5s linear, opacity 1s ease-in;
+            z-index: 100;
+            opacity: 0;
+            font-size: 2.5em;
+        }
+        #message {
+            display: none;
+            margin-top: 30px;
+            font-size: 2.0em;
+            background: transparent;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            font-weight: bold;
+            color: #ffb6c1;
+            transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+            transform: translateY(30px);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+        #message.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+        #counter-container {
+            display: none;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: #ffb6c1;
+        }
+        #song-container {
+            margin-top: 20px;
+            display: none;
+            opacity: 1;
+            font-weight: bold;
+            color: #ffb6c1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Happy Yellow Flowers Day!</h1>
+        <p>️️️️March 21st is a day to celebrate love, happiness, and the beauty of yellow flowers</p>
+        <button class="btn" onclick="playAudio()">Make it bloom! 🌼🌻☀️🏵️</button>
+
+        <div id="message">
+            <h2>My Love Kinley</h2>
+            <p>Today, I'm sending you yellow flowers, not just for their beauty, but because they hold a meaning as deep as my love for you. These flowers symbolize joy, warmth, and that happiness that never fades, that light that always shines, even on the darkest days, just as you illuminate my life.</p>
+            <p>You are my sunshine, my happiness, and the most special person I have ever met. Especially today, on the Day of Yellow Flowers, they symbolize friendship and the promise of a bright future, and to me, that is exactly what you are: my best friend, my partner, my future. I admire you, I adore you, I love you soooooo much, and I feel incredibly fortunate to have you in my life.</p>
+            <p>Your presence makes everything feel softer, warmer, and more beautiful. I want you to know that I will always be here for you, no matter what. You are never alone, and you never will be. I will support you, love you, and cherish every moment we share. I am endlessly proud of you.</p>
+            <p>This is just a small gesture to remind you how much you mean to me. I hope these flowers make you smile, just as you make me smile. Because you are, truly, one of the most special people in my life.</p>
+            <p>With all my love,</p>
+            <p><strong>Jonathan Diaz (Your baby)</strong></p>
+        </div>
+
+        <div id="counter-container">
+            <p>Since October 17, 2024, when I found the love of my life:</p>
+            <p id="counter"></p>
+        </div>
+
+        <div id="song-container">
+            <p>A special song for you:</p>
+            <audio id="audio-player" controls src="cancion.mp3"></audio>
+            <p>🌼🌻☀️🏵️ I LOVE YOUUUUUUUUUUUUUU🌼🌻☀️🏵️</p>
+        </div>
+    </div>
+
+    <script>
+        function playAudio() {
+            let audioPlayer = document.getElementById('audio-player');
+            audioPlayer.play();
+            bloomFlowers();
+            startCounter();
+            document.getElementById('counter-container').style.display = 'block';
+        }
+
+        function bloomFlowers() {
+            let flowerEmojis = ['🌼', '🌻', '🌷', '🌾', '💐', '🏵️'];
+
+            for (let i = 0; i < 50; i++) {  // ¡Más flores cayendo!
+                let flower = document.createElement('span');
+                flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                flower.className = 'flower';
+                flower.style.left = Math.random() * window.innerWidth + 'px';
+                flower.style.top = '-50px';  
+
+                document.body.appendChild(flower);
+
+                setTimeout(() => {
+                    flower.style.top = window.innerHeight + 'px';
+                    flower.style.opacity = 1;
+
+                    setTimeout(() => flower.remove(), 5000);
+                }, 100 * i);
+            }
+
+            setTimeout(() => {
+                document.getElementById('message').classList.add('show');
+                document.getElementById('song-container').style.display = 'block';
+            }, 5000);
+        }
+
+        function startCounter() {
+            let startDate = new Date("2024-10-17T00:00:00").getTime();
+            function updateCounter() {
+                let now = new Date().getTime();
+                let elapsed = now - startDate;
+
+                let days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+                document.getElementById("counter").innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+            }
+
+            updateCounter();
+            setInterval(updateCounter, 1000);
+        }
+    </script>
+</body>
+</html>
